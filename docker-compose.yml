@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+    networks: 
+        - dockernetwork
+    volumes:
+      - .:/app/
+      - nodemodules_react_docker:/app/node_modules
+    restart: always
+
+networks: 
+    dockernetwork:
+
+volumes:
+  nodemodules_react_docker: {}
